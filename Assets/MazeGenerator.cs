@@ -62,9 +62,12 @@ public class MazeGenerator : MonoBehaviour
         for(int x = (int) current.transform.position.x; x < in_x; x ++) {
             for(int y = (int) current.transform.position.y; y < in_y; y ++) {
                 for(int z = (int) current.transform.position.z; z < in_z; z ++) {
-                    var curCel = _mazeGrid[x, y, z];
-                    if(curCel.IsVisited == false) {
-                        yield return curCel;
+                    if (x < _mazeLength && y < _mazeWidth && z < _mazeHeight && x >=0 && z >= 0 && y >=0) {
+                        var curCel = _mazeGrid[x, y, z];
+                        if (curCel.IsVisited == false)
+                        {
+                            yield return curCel;
+                        }
                     }
                 }
             }
